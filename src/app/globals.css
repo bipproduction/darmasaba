@@ -1,4 +1,16 @@
-@tailwind base;
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+
+h1 {
+  font-family: 'Noto Sans JP', sans-serif;
+} */
+
+border-black {
+  border: 1px solid black
+}
+
+
+
+/* @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -30,4 +42,4 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-}
+} */

@@ -14,7 +14,7 @@ datasource db {
 }
 
 model UserRole {
-  id         String   @id
+  id         String   @id @default(cuid())
   name       String
   active     Boolean  @default(true)
   desc       String
@@ -24,15 +24,62 @@ model UserRole {
   User       User[]
 }
 
+model Jabatan {
+  id        String   @id @default(cuid())
+  name      String
+  active    Boolean  @default(true)
+  desc      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+}
+
+// =========================================
+
+model Desa {
+  id        String   @id @default(cuid())
+  name      String
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User[]
+}
+
 model User {
-  id         String    @id
+  id         String    @id @default(cuid())
   name       String
-  email      String?
+  email      String?   @unique
   password   String?
-  phone      String
+  phone      String    @unique
   role       UserRole? @relation(fields: [userRoleId], references: [id])
   active     Boolean   @default(true)
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
   userRoleId String?
+  Jabatan    Jabatan[]
+  Desa       Desa?     @relation(fields: [desaId], references: [id])
+  desaId     String?
+  AuthLog    AuthLog[]
+}
+
+model AuthLog {
+  id        String   @id @default(cuid())
+  user      User?    @relation(fields: [userId], references: [id])
+  token     String   @unique
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  expiresAt DateTime
+  userId    String?
+}
+
+model Otp {
+  id        String   @id @default(cuid())
+  phone     String   @unique
+  code      String
+  expiresAt DateTime
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

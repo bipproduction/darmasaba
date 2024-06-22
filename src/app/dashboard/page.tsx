@@ -1,7 +1,9 @@
+import { AuthProvider } from "@/ui/component/AuthProvider";
+import { DashboardHome } from "@/ui/dashboard/DashboardHome";
+
+
 export default function Page() {
-    return (
-        <div>
-            dashboard
-        </div>
-    )
+    return <AuthProvider>
+        <DashboardHome />
+    </AuthProvider>
 }

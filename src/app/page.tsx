@@ -1,9 +1,9 @@
-import Image from "next/image";
 
-export default function Home() {
-  return (
-    <main>
-      page main
-    </main>
-  );
+import { AuthProvider } from "@/ui/component/AuthProvider";
+import { LandingPage } from "@/ui/landing/Landing";
+
+export default async function Home() {
+  return <AuthProvider redirectTo="/dashboard">
+    <LandingPage />
+  </AuthProvider>
 }

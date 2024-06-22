@@ -1,17 +1,8 @@
-import { cookies } from 'next/headers'
+import { DashboardLayout } from "@/ui/dashboard/DashboardLayout";
+
 export default function Layout({ children }: { children: React.ReactNode }) {
-    const cookieStore = cookies()
-    const token = cookieStore.get('token')
-    if (!token) {
-        return (
-            <div>
-                please login
-            </div>
-        )
-    }
-    return (
-        <div>
-            {children}
-        </div>
-    )
+
+    return <DashboardLayout>
+        {children}
+    </DashboardLayout>
 }

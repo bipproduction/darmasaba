@@ -1,3 +1,6 @@
-export async function GET() {
-    return new Response('test')
+
+export async function GET(req: Request) {
+    const { searchParams } = new URL(req.url)
+
+    return new Response("test")
 }
