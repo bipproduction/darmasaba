@@ -45,7 +45,11 @@ export async function validationTokenUser(req: Request) {
                         select: {
                             id: true,
                             name: true,
-                            roleAccess: true
+                            UserRoleAccessRole: {
+                                where: {
+                                    active: true
+                                }
+                            }
                         }
                     }
                 }
