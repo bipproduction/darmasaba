@@ -37,4 +37,16 @@ export async function libSeed() {
         })
     }
 
+    // seed jabatan
+    console.log("seeding jabatan...")
+    for (const item of jsonData.jabatan) {
+        await prisma.jabatan.upsert({
+            where: {
+                id: item.id
+            },
+            create: item,
+            update: item
+        })
+    }   
+
 }

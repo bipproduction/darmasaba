@@ -4,13 +4,11 @@ const port = process.env.PORT || 3005;
 const localhost = `http://localhost:${port}`;
 const serverHost = 'https://wibu-server.wibudev.com';
 const isLocal = process.env.NODE_ENV === 'development';
-const waHost = "https://wa.wibudev.com";
 const app_config = {
-    host: isLocal ? localhost : serverHost,
-    isLocal,
-    port,
-    waHost
-    
+    title: 'Wibu Server',
+    description: 'Server Untuk Wibu',
+    host:  isLocal ? localhost : serverHost,
+    isLocal
 }
 
 export default app_config;

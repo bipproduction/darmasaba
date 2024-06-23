@@ -3,7 +3,7 @@ import { GetListDesa } from "./GetListDesa";
 import { CreateDesa } from "./CreateDesa";
 
 export function MainDesa() {
-    return <Paper >
+    return <Paper withBorder p={"md"}>
         <Stack>
             <CreateDesa />
             <GetListDesa />

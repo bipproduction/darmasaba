@@ -1,0 +1,47 @@
+[
+    {
+        "id": "1",
+        "name": "perbekel",
+        "alias": "kepala desa"
+    },
+    {
+        "id": "2",
+        "name": "sekdes",
+        "alias": "sekertaris desa"
+    },
+    {
+        "id": "3",
+        "name": "kaur",
+        "alias": "kepala urusan"
+    },
+    {
+        "id": "4",
+        "name": "kasi",
+        "alias": "kepala seksi"
+    },
+    {
+        "id": "5",
+        "name": "kadus",
+        "alias": "kepala dusun"
+    },
+    {
+        "id": "6",
+        "name": "BPD",
+        "alias": "Badan Permusyawaratan Desa"
+    },
+    {
+        "id": "7",
+        "name": "LPM",
+        "alias": "Lembaga Pemberdayaan Masyarakat"
+    },
+    {
+        "id": "8",
+        "name": "RT",
+        "alias": "Rumah Tangga"
+    },
+    {
+        "id": "9",
+        "name": "RW",
+        "alias": "Rukun Warga"
+    }
+]

@@ -1,8 +1,10 @@
+
 import '@mantine/core/styles.css';
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 import { fetchApiServer } from '@/lib/api/fetchApiServer';
 import appConfig from '../../app.config';
 fetchApiServer.init(appConfig.host)
+import './globals.css'
 
 export const metadata = {
   title: 'My Mantine app',

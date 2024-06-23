@@ -4,10 +4,13 @@ h1 {
   font-family: 'Noto Sans JP', sans-serif;
 } */
 
-border-black {
-  border: 1px solid black
+.gray-light {
+  background-color: hsl(220, 33%, 89%);
 }
 
+.gray-dark {
+  background-color: hsl(220, 4%, 41%);
+}
 
 
 /* @tailwind base;

@@ -22,6 +22,7 @@ export const fetchApiServer = {
     return fetch(`${this.host}/api/user/logout${searchParams || ""}`, {
       method: "GET",
       headers,
+      cache: "no-cache",
     });
   },
 
@@ -43,6 +44,7 @@ export const fetchApiServer = {
     return fetch(`${this.host}/api/user/get/token${searchParams || ""}`, {
       method: "GET",
       headers,
+      cache: "no-cache",
     });
   },
 
@@ -64,6 +66,7 @@ export const fetchApiServer = {
     return fetch(`${this.host}/api/test${searchParams || ""}`, {
       method: "GET",
       headers,
+      cache: "no-cache",
     });
   },
 
@@ -88,6 +91,7 @@ export const fetchApiServer = {
       method: "POST",
       headers,
       body,
+      cache: "no-cache",
     });
   },
 
@@ -112,7 +116,29 @@ export const fetchApiServer = {
       method: "POST",
       headers,
       body,
+      cache: "no-cache",
     });
+  },
+
+  /**
+   * [/Users/bip/Documents/projects/bip/darmasaba/src/app/api/developer/user-role/list/route.ts](file:///Users/bip/Documents/projects/bip/darmasaba/src/app/api/developer/user-role/list/route.ts)
+   * @param {string} searchParams ?key=value
+   * @param {string} token Optional authorization token
+   */
+  async developerUserRoleList({
+    searchParams,
+    token,
+  }: {
+    searchParams?: string;
+    token?: string;
+  }) {
+    const headers: Record<string, string> = token
+      ? { Authorization: `Bearer ${token}` }
+      : {};
+    return fetch(
+      `${this.host}/api/developer/user-role/list${searchParams || ""}`,
+      { method: "GET", headers, cache: "no-cache" },
+    );
   },
 
   /**
@@ -133,7 +159,29 @@ export const fetchApiServer = {
     return fetch(`${this.host}/api/developer/user/list${searchParams || ""}`, {
       method: "GET",
       headers,
+      cache: "no-cache",
     });
+  },
+
+  /**
+   * [/Users/bip/Documents/projects/bip/darmasaba/src/app/api/developer/jabatan/list/route.ts](file:///Users/bip/Documents/projects/bip/darmasaba/src/app/api/developer/jabatan/list/route.ts)
+   * @param {string} searchParams ?key=value
+   * @param {string} token Optional authorization token
+   */
+  async developerJabatanList({
+    searchParams,
+    token,
+  }: {
+    searchParams?: string;
+    token?: string;
+  }) {
+    const headers: Record<string, string> = token
+      ? { Authorization: `Bearer ${token}` }
+      : {};
+    return fetch(
+      `${this.host}/api/developer/jabatan/list${searchParams || ""}`,
+      { method: "GET", headers, cache: "no-cache" },
+    );
   },
 
   /**
@@ -154,7 +202,119 @@ export const fetchApiServer = {
     return fetch(`${this.host}/api/developer/desa/list${searchParams || ""}`, {
       method: "GET",
       headers,
+      cache: "no-cache",
     });
+  },
+
+  /**
+   * [/Users/bip/Documents/projects/bip/darmasaba/src/app/api/developer/desa/create/route.ts](file:///Users/bip/Documents/projects/bip/darmasaba/src/app/api/developer/desa/create/route.ts)
+   * @param {string} searchParams ?key=value
+   * @param {string} token Optional authorization token
+   */
+  async developerDesaCreate({
+    body,
+    searchParams,
+    token,
+  }: {
+    body?: string;
+    searchParams?: string;
+    token?: string;
+  }) {
+    const headers: Record<string, string> = token
+      ? { Authorization: `Bearer ${token}` }
+      : {};
+    return fetch(
+      `${this.host}/api/developer/desa/create${searchParams || ""}`,
+      { method: "POST", headers, body, cache: "no-cache" },
+    );
+  },
+
+  /**
+   * [/Users/bip/Documents/projects/bip/darmasaba/src/app/api/developer/access-role/list-by-user-role-id/route.ts](file:///Users/bip/Documents/projects/bip/darmasaba/src/app/api/developer/access-role/list-by-user-role-id/route.ts)
+   * @param {string} searchParams ?key=value
+   * @param {string} token Optional authorization token
+   */
+  async developerAccessRoleListByUserRoleId({
+    searchParams,
+    token,
+  }: {
+    searchParams?: string;
+    token?: string;
+  }) {
+    const headers: Record<string, string> = token
+      ? { Authorization: `Bearer ${token}` }
+      : {};
+    return fetch(
+      `${this.host}/api/developer/access-role/list-by-user-role-id${searchParams || ""}`,
+      { method: "GET", headers, cache: "no-cache" },
+    );
+  },
+
+  /**
+   * [/Users/bip/Documents/projects/bip/darmasaba/src/app/api/developer/access-role/list/route.ts](file:///Users/bip/Documents/projects/bip/darmasaba/src/app/api/developer/access-role/list/route.ts)
+   * @param {string} searchParams ?key=value
+   * @param {string} token Optional authorization token
+   */
+  async developerAccessRoleList({
+    searchParams,
+    token,
+  }: {
+    searchParams?: string;
+    token?: string;
+  }) {
+    const headers: Record<string, string> = token
+      ? { Authorization: `Bearer ${token}` }
+      : {};
+    return fetch(
+      `${this.host}/api/developer/access-role/list${searchParams || ""}`,
+      { method: "GET", headers, cache: "no-cache" },
+    );
+  },
+
+  /**
+   * [/Users/bip/Documents/projects/bip/darmasaba/src/app/api/developer/access-role/create/route.ts](file:///Users/bip/Documents/projects/bip/darmasaba/src/app/api/developer/access-role/create/route.ts)
+   * @param {string} searchParams ?key=value
+   * @param {string} token Optional authorization token
+   */
+  async developerAccessRoleCreate({
+    body,
+    searchParams,
+    token,
+  }: {
+    body?: string;
+    searchParams?: string;
+    token?: string;
+  }) {
+    const headers: Record<string, string> = token
+      ? { Authorization: `Bearer ${token}` }
+      : {};
+    return fetch(
+      `${this.host}/api/developer/access-role/create${searchParams || ""}`,
+      { method: "POST", headers, body, cache: "no-cache" },
+    );
+  },
+
+  /**
+   * [/Users/bip/Documents/projects/bip/darmasaba/src/app/api/developer/access-role/assign/route.ts](file:///Users/bip/Documents/projects/bip/darmasaba/src/app/api/developer/access-role/assign/route.ts)
+   * @param {string} searchParams ?key=value
+   * @param {string} token Optional authorization token
+   */
+  async developerAccessRoleAssign({
+    body,
+    searchParams,
+    token,
+  }: {
+    body?: string;
+    searchParams?: string;
+    token?: string;
+  }) {
+    const headers: Record<string, string> = token
+      ? { Authorization: `Bearer ${token}` }
+      : {};
+    return fetch(
+      `${this.host}/api/developer/access-role/assign${searchParams || ""}`,
+      { method: "POST", headers, body, cache: "no-cache" },
+    );
   },
 
   /**
@@ -175,6 +335,7 @@ export const fetchApiServer = {
     return fetch(`${this.host}/api/dashboard/get-user${searchParams || ""}`, {
       method: "GET",
       headers,
+      cache: "no-cache",
     });
   },
   paths() {
@@ -184,8 +345,15 @@ export const fetchApiServer = {
       test: `${this.host}/api/test/`,
       otpSend: `${this.host}/api/otp/send/`,
       otpCompare: `${this.host}/api/otp/compare/`,
+      developerUserRoleList: `${this.host}/api/developer/user-role/list/`,
       developerUserList: `${this.host}/api/developer/user/list/`,
+      developerJabatanList: `${this.host}/api/developer/jabatan/list/`,
       developerDesaList: `${this.host}/api/developer/desa/list/`,
+      developerDesaCreate: `${this.host}/api/developer/desa/create/`,
+      developerAccessRoleListByUserRoleId: `${this.host}/api/developer/access-role/list-by-user-role-id/`,
+      developerAccessRoleList: `${this.host}/api/developer/access-role/list/`,
+      developerAccessRoleCreate: `${this.host}/api/developer/access-role/create/`,
+      developerAccessRoleAssign: `${this.host}/api/developer/access-role/assign/`,
       dashboardGetUser: `${this.host}/api/dashboard/get-user/`,
     };
   },

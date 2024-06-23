@@ -1,20 +1,30 @@
 'use client'
-import { Button, Group, Stack, TextInput, Title } from "@mantine/core";
+import { fetchApiClient } from "@/lib/api/fetchApiClient";
+import { tos } from "@/lib/toast/toast";
+import { Button, Card, Group, Stack, TextInput, Title } from "@mantine/core";
 import { useState } from "react";
 
 export function CreateDesa() {
     const [desaName, setDesaName] = useState("")
+    async function onCreate() {
 
-    function onCreate() {
-        console.log(desaName)
+        const body = {
+            name: desaName
+        }
+        const res = await fetchApiClient.developerDesaCreate({ body: JSON.stringify(body) })
+        const result = await res.json()
+        tos(result.message)
+
     }
-    return <Stack p={"md"} style={{border: "1px solid black"}}>
-        <Title>Create Desa</Title>
-        <Group>
-            <Stack>
-                <TextInput label="Desa Name" placeholder="Desa Name" onChange={(e) => setDesaName(e.target.value)} />
-                <Button onClick={onCreate}>CREATE</Button>
-            </Stack>
-        </Group>
-    </Stack>
+    return <Card withBorder className="gray-light">
+        <Stack p={"md"} >
+            <Title order={4}> Create Desa</Title>
+            <Group>
+                <Stack>
+                    <TextInput label="Desa Name" placeholder="Desa Name" onChange={(e) => setDesaName(e.target.value)} />
+                    <Button onClick={onCreate}>CREATE</Button>
+                </Stack>
+            </Group>
+        </Stack>
+    </Card>
 }

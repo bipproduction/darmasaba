@@ -12,7 +12,7 @@ export function LandingPage() {
                     <Title c={"blue"}>System Desa Mandiri</Title>
                 </Center>
                 <Box p={"lg"}>
-                    <Image maw={500} src={"https://timedoor.net/wp-content/uploads/2022/09/Mobile-Apps-Development-2.png"} alt="" />
+                    <Image maw={500} src={"/assets/img/mobile.webp"} alt="" />
                 </Box>
                 <Center>
                     <Image maw={100} src={"https://www.techgrapple.com/wp-content/uploads/2016/06/Google-Play-and-App-Store.jpg"} alt="" />

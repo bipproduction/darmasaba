@@ -58,11 +58,12 @@ function InputPin({
                 const res = await fetchApiClient.otpCompare({ body: JSON.stringify(body) }).then((res) => res)
                 const data = await res.json()
                 tos(data.message)
-                router.refresh()
-                router.push("/")
                 setPin(false)
                 setLoading(false)
+                router.push("/")
+                router.refresh()
             } catch (error) {
+                console.log(error)
                 tos("nomor telepon atau kode otp tidak cocok")
                 setLoading(false)
                 return

@@ -5,11 +5,11 @@ export function JsonTable({ data }: { data: any }) {
     if (!data) return <LoadingTable row={1} col={5} />
     return (
         <Stack style={{
-            overflow: 'auto',
+            overflowX: 'auto',
         }}>
-            <Table>
+            <Table stickyHeader striped border={1} highlightOnHover>
                 <Table.Thead>
-                    <Table.Tr>
+                    <Table.Tr className={"gray-dark"} c="white">
                         {_.keys(data[0]).map((key, index) => (
                             <Table.Th key={index}>{key}</Table.Th>
                         ))}
@@ -19,7 +19,7 @@ export function JsonTable({ data }: { data: any }) {
                     {data.map((item: any, index: number) => (
                         <Table.Tr key={index}>
                             {_.keys(item).map((key, index) => (
-                                <Table.Td maw={300} style={{
+                                <Table.Td miw={50} maw={300} style={{
                                     textWrap: 'pretty',
                                     wordBreak: 'break-all'
                                 }} key={index}>{typeof item[key] === 'object' ? JSON.stringify(item[key]) : typeof item[key] === 'boolean' ? item[key]?.toString() : item[key]}</Table.Td>

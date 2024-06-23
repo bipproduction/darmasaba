@@ -5,7 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider   = "prisma-client-js"
+  engineType = "binary"
 }
 
 datasource db {
@@ -13,33 +14,40 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+generator erd {
+  provider = "prisma-erd-generator"
+  output   = "./ERD.svg"
+}
+
+// =========================================
+
 model UserRole {
-  id         String   @id @default(cuid())
-  name       String
-  active     Boolean  @default(true)
-  desc       String
-  roleAccess Json     @default("[]")
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  User       User[]
+  id                 String               @id @default(cuid())
+  name               String
+  active             Boolean              @default(true)
+  desc               String
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+  User               User[]
+  UserRoleAccessRole UserRoleAccessRole[]
 }
 
 model Jabatan {
   id        String   @id @default(cuid())
   name      String
+  alias     String?
   active    Boolean  @default(true)
-  desc      String
+  desc      String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  User      User?    @relation(fields: [userId], references: [id])
-  userId    String?
+  User      User[]
 }
 
 // =========================================
 
 model Desa {
   id        String   @id @default(cuid())
-  name      String
+  name      String   @unique
   active    Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -57,10 +65,33 @@ model User {
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
   userRoleId String?
-  Jabatan    Jabatan[]
+  Jabatan    Jabatan?  @relation(fields: [jabatanId], references: [id])
   Desa       Desa?     @relation(fields: [desaId], references: [id])
   desaId     String?
   AuthLog    AuthLog[]
+  jabatanId  String?
+}
+
+model AccessRole {
+  id                 String               @id @default(cuid())
+  name               String               @unique
+  active             Boolean              @default(true)
+  desc               String?
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+  UserRoleAccessRole UserRoleAccessRole[]
+}
+
+model UserRoleAccessRole {
+  AccessRole   AccessRole? @relation(fields: [accessRoleId], references: [id])
+  UserRole     UserRole?   @relation(fields: [userRoleId], references: [id])
+  active       Boolean     @default(true)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  accessRoleId String
+  userRoleId   String
+
+  @@id([accessRoleId, userRoleId])
 }
 
 model AuthLog {
