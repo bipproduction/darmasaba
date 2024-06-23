@@ -1,7 +1,7 @@
 import { validationTokenUser } from "@/lib/auth/validationToken"
 import prisma from "@/lib/prisma/prisma"
 
-export async function Get(req: Request) {
+export async function GET(req: Request) {
     const user = validationTokenUser(req)
     if (!user) {
         return Response.json({
