@@ -19,7 +19,11 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    const sembarang: any[] | {} = [] || {};
+    let sembarang = {
+      data: [],
+      success: false,
+      message: "",
+    };
     try {
       const res = await fetch(
         `${this.host}/api/user/logout${searchParams || ""}`,
@@ -29,19 +33,11 @@ export const fetchApiServer = {
         .json()
         .then((json) => json)
         .catch((e) => null);
-
-      return {
-        data: json || sembarang,
-        success: !!json,
-        message: json ? "success" : "error",
-      };
+      return json || sembarang;
     } catch (e) {
       console.error(e);
-      return {
-        data: sembarang,
-        success: false,
-        message: "error" + e,
-      };
+      sembarang.message = "error" + e;
+      return sembarang;
     }
   },
 
@@ -60,7 +56,11 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    const sembarang: any[] | {} = [] || {};
+    let sembarang = {
+      data: [],
+      success: false,
+      message: "",
+    };
     try {
       const res = await fetch(
         `${this.host}/api/user/get/token${searchParams || ""}`,
@@ -70,19 +70,11 @@ export const fetchApiServer = {
         .json()
         .then((json) => json)
         .catch((e) => null);
-
-      return {
-        data: json || sembarang,
-        success: !!json,
-        message: json ? "success" : "error",
-      };
+      return json || sembarang;
     } catch (e) {
       console.error(e);
-      return {
-        data: sembarang,
-        success: false,
-        message: "error" + e,
-      };
+      sembarang.message = "error" + e;
+      return sembarang;
     }
   },
 
@@ -101,7 +93,11 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    const sembarang: any[] | {} = [] || {};
+    let sembarang = {
+      data: [],
+      success: false,
+      message: "",
+    };
     try {
       const res = await fetch(`${this.host}/api/test${searchParams || ""}`, {
         method: "GET",
@@ -112,19 +108,11 @@ export const fetchApiServer = {
         .json()
         .then((json) => json)
         .catch((e) => null);
-
-      return {
-        data: json || sembarang,
-        success: !!json,
-        message: json ? "success" : "error",
-      };
+      return json || sembarang;
     } catch (e) {
       console.error(e);
-      return {
-        data: sembarang,
-        success: false,
-        message: "error" + e,
-      };
+      sembarang.message = "error" + e;
+      return sembarang;
     }
   },
 
@@ -145,7 +133,11 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    const sembarang: any[] | {} = [] || {};
+    let sembarang = {
+      data: [],
+      success: false,
+      message: "",
+    };
     try {
       const res = await fetch(
         `${this.host}/api/otp/send${searchParams || ""}`,
@@ -155,19 +147,11 @@ export const fetchApiServer = {
         .json()
         .then((json) => json)
         .catch((e) => null);
-
-      return {
-        data: json || sembarang,
-        success: !!json,
-        message: json ? "success" : "error",
-      };
+      return json || sembarang;
     } catch (e) {
       console.error(e);
-      return {
-        data: sembarang,
-        success: false,
-        message: "error" + e,
-      };
+      sembarang.message = "error" + e;
+      return sembarang;
     }
   },
 
@@ -188,7 +172,11 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    const sembarang: any[] | {} = [] || {};
+    let sembarang = {
+      data: [],
+      success: false,
+      message: "",
+    };
     try {
       const res = await fetch(
         `${this.host}/api/otp/compare${searchParams || ""}`,
@@ -198,19 +186,11 @@ export const fetchApiServer = {
         .json()
         .then((json) => json)
         .catch((e) => null);
-
-      return {
-        data: json || sembarang,
-        success: !!json,
-        message: json ? "success" : "error",
-      };
+      return json || sembarang;
     } catch (e) {
       console.error(e);
-      return {
-        data: sembarang,
-        success: false,
-        message: "error" + e,
-      };
+      sembarang.message = "error" + e;
+      return sembarang;
     }
   },
 
@@ -229,7 +209,11 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    const sembarang: any[] | {} = [] || {};
+    let sembarang = {
+      data: [],
+      success: false,
+      message: "",
+    };
     try {
       const res = await fetch(
         `${this.host}/api/developer/user-role/list${searchParams || ""}`,
@@ -239,19 +223,11 @@ export const fetchApiServer = {
         .json()
         .then((json) => json)
         .catch((e) => null);
-
-      return {
-        data: json || sembarang,
-        success: !!json,
-        message: json ? "success" : "error",
-      };
+      return json || sembarang;
     } catch (e) {
       console.error(e);
-      return {
-        data: sembarang,
-        success: false,
-        message: "error" + e,
-      };
+      sembarang.message = "error" + e;
+      return sembarang;
     }
   },
 
@@ -270,7 +246,11 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    const sembarang: any[] | {} = [] || {};
+    let sembarang = {
+      data: [],
+      success: false,
+      message: "",
+    };
     try {
       const res = await fetch(
         `${this.host}/api/developer/user/list${searchParams || ""}`,
@@ -280,19 +260,11 @@ export const fetchApiServer = {
         .json()
         .then((json) => json)
         .catch((e) => null);
-
-      return {
-        data: json || sembarang,
-        success: !!json,
-        message: json ? "success" : "error",
-      };
+      return json || sembarang;
     } catch (e) {
       console.error(e);
-      return {
-        data: sembarang,
-        success: false,
-        message: "error" + e,
-      };
+      sembarang.message = "error" + e;
+      return sembarang;
     }
   },
 
@@ -311,7 +283,11 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    const sembarang: any[] | {} = [] || {};
+    let sembarang = {
+      data: [],
+      success: false,
+      message: "",
+    };
     try {
       const res = await fetch(
         `${this.host}/api/developer/jabatan/list${searchParams || ""}`,
@@ -321,19 +297,11 @@ export const fetchApiServer = {
         .json()
         .then((json) => json)
         .catch((e) => null);
-
-      return {
-        data: json || sembarang,
-        success: !!json,
-        message: json ? "success" : "error",
-      };
+      return json || sembarang;
     } catch (e) {
       console.error(e);
-      return {
-        data: sembarang,
-        success: false,
-        message: "error" + e,
-      };
+      sembarang.message = "error" + e;
+      return sembarang;
     }
   },
 
@@ -352,7 +320,11 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    const sembarang: any[] | {} = [] || {};
+    let sembarang = {
+      data: [],
+      success: false,
+      message: "",
+    };
     try {
       const res = await fetch(
         `${this.host}/api/developer/desa/list${searchParams || ""}`,
@@ -362,19 +334,11 @@ export const fetchApiServer = {
         .json()
         .then((json) => json)
         .catch((e) => null);
-
-      return {
-        data: json || sembarang,
-        success: !!json,
-        message: json ? "success" : "error",
-      };
+      return json || sembarang;
     } catch (e) {
       console.error(e);
-      return {
-        data: sembarang,
-        success: false,
-        message: "error" + e,
-      };
+      sembarang.message = "error" + e;
+      return sembarang;
     }
   },
 
@@ -395,7 +359,11 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    const sembarang: any[] | {} = [] || {};
+    let sembarang = {
+      data: [],
+      success: false,
+      message: "",
+    };
     try {
       const res = await fetch(
         `${this.host}/api/developer/desa/create${searchParams || ""}`,
@@ -405,19 +373,11 @@ export const fetchApiServer = {
         .json()
         .then((json) => json)
         .catch((e) => null);
-
-      return {
-        data: json || sembarang,
-        success: !!json,
-        message: json ? "success" : "error",
-      };
+      return json || sembarang;
     } catch (e) {
       console.error(e);
-      return {
-        data: sembarang,
-        success: false,
-        message: "error" + e,
-      };
+      sembarang.message = "error" + e;
+      return sembarang;
     }
   },
 
@@ -436,7 +396,11 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    const sembarang: any[] | {} = [] || {};
+    let sembarang = {
+      data: [],
+      success: false,
+      message: "",
+    };
     try {
       const res = await fetch(
         `${this.host}/api/developer/access-role/list-by-user-role-id${searchParams || ""}`,
@@ -446,19 +410,11 @@ export const fetchApiServer = {
         .json()
         .then((json) => json)
         .catch((e) => null);
-
-      return {
-        data: json || sembarang,
-        success: !!json,
-        message: json ? "success" : "error",
-      };
+      return json || sembarang;
     } catch (e) {
       console.error(e);
-      return {
-        data: sembarang,
-        success: false,
-        message: "error" + e,
-      };
+      sembarang.message = "error" + e;
+      return sembarang;
     }
   },
 
@@ -477,7 +433,11 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    const sembarang: any[] | {} = [] || {};
+    let sembarang = {
+      data: [],
+      success: false,
+      message: "",
+    };
     try {
       const res = await fetch(
         `${this.host}/api/developer/access-role/list${searchParams || ""}`,
@@ -487,19 +447,11 @@ export const fetchApiServer = {
         .json()
         .then((json) => json)
         .catch((e) => null);
-
-      return {
-        data: json || sembarang,
-        success: !!json,
-        message: json ? "success" : "error",
-      };
+      return json || sembarang;
     } catch (e) {
       console.error(e);
-      return {
-        data: sembarang,
-        success: false,
-        message: "error" + e,
-      };
+      sembarang.message = "error" + e;
+      return sembarang;
     }
   },
 
@@ -520,7 +472,11 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    const sembarang: any[] | {} = [] || {};
+    let sembarang = {
+      data: [],
+      success: false,
+      message: "",
+    };
     try {
       const res = await fetch(
         `${this.host}/api/developer/access-role/create${searchParams || ""}`,
@@ -530,19 +486,11 @@ export const fetchApiServer = {
         .json()
         .then((json) => json)
         .catch((e) => null);
-
-      return {
-        data: json || sembarang,
-        success: !!json,
-        message: json ? "success" : "error",
-      };
+      return json || sembarang;
     } catch (e) {
       console.error(e);
-      return {
-        data: sembarang,
-        success: false,
-        message: "error" + e,
-      };
+      sembarang.message = "error" + e;
+      return sembarang;
     }
   },
 
@@ -563,7 +511,11 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    const sembarang: any[] | {} = [] || {};
+    let sembarang = {
+      data: [],
+      success: false,
+      message: "",
+    };
     try {
       const res = await fetch(
         `${this.host}/api/developer/access-role/assign${searchParams || ""}`,
@@ -573,19 +525,11 @@ export const fetchApiServer = {
         .json()
         .then((json) => json)
         .catch((e) => null);
-
-      return {
-        data: json || sembarang,
-        success: !!json,
-        message: json ? "success" : "error",
-      };
+      return json || sembarang;
     } catch (e) {
       console.error(e);
-      return {
-        data: sembarang,
-        success: false,
-        message: "error" + e,
-      };
+      sembarang.message = "error" + e;
+      return sembarang;
     }
   },
 
@@ -604,7 +548,11 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    const sembarang: any[] | {} = [] || {};
+    let sembarang = {
+      data: [],
+      success: false,
+      message: "",
+    };
     try {
       const res = await fetch(
         `${this.host}/api/dashboard/get-user${searchParams || ""}`,
@@ -614,19 +562,11 @@ export const fetchApiServer = {
         .json()
         .then((json) => json)
         .catch((e) => null);
-
-      return {
-        data: json || sembarang,
-        success: !!json,
-        message: json ? "success" : "error",
-      };
+      return json || sembarang;
     } catch (e) {
       console.error(e);
-      return {
-        data: sembarang,
-        success: false,
-        message: "error" + e,
-      };
+      sembarang.message = "error" + e;
+      return sembarang;
     }
   },
   paths() {

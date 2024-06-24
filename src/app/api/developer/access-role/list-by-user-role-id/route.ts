@@ -18,5 +18,9 @@ export async function GET(req: Request) {
         }
     })
 
-    return Response.json(res.map(item => item.accessRoleId))
+    return Response.json({
+        success: true,
+        message: "success",
+        data: res.map(item => item.accessRoleId)
+    })
 }

@@ -4,7 +4,10 @@ import { revalidateTag } from "next/cache"
 export async function POST(req: Request) {
     const { name } = await req.json()
     if (!name) {
-        return new Response(JSON.stringify({ success: false, message: "name is required" }), { status: 400 })
+        return Response.json({
+            success: false,
+            message: "Please fill all field"
+        })
     }
 
     const desa = await prisma.desa.findUnique({
@@ -14,7 +17,10 @@ export async function POST(req: Request) {
     })
 
     if (desa) {
-        return new Response(JSON.stringify({ success: false, message: "desa already exists" }), { status: 400 })
+        return Response.json({
+            success: false,
+            message: "desa already exist"
+        }, { status: 400 })
     }
     const data = await prisma.desa.create({
         data: {

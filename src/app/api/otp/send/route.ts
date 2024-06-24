@@ -3,16 +3,16 @@ import appConfig from "../../../../../app.config"
 import prisma from "@/lib/prisma/prisma"
 import moment from "moment"
 
-interface BODY {
-    phoneNumber: string
-}
 export async function POST(req: Request) {
     try {
         const { phoneNumber } = await req.json()
 
         console.log(phoneNumber)
         if (_.isEmpty(phoneNumber)) {
-            return new Response("nomor telepon tidak boleh kosong", { status: 400 })
+            return Response.json({
+                success: false,
+                message: "nomor telepon tidak boleh kosong",
+            }, { status: 400 })
         }
 
         const user = await prisma.user.findUnique({
@@ -22,7 +22,10 @@ export async function POST(req: Request) {
         })
 
         if (!user) {
-            return new Response("nomor telepon tidak terdaftar", { status: 400 })
+            return Response.json({
+                success: false,
+                message: "nomor telepon tidak ditemukan",
+            }, { status: 400 })
         }
 
         const code = _.random(1000, 9999)
@@ -30,12 +33,8 @@ export async function POST(req: Request) {
         const wa = await fetch(appConfig.waHost + "/code?text=" + text + "&nom=" + phoneNumber)
             .then((res) => res.json())
 
-        if (!wa) {
-            return new Response("internal server error, gagal kirim otp", { status: 500 })
-        }
-
         const expiresAt = moment().add(5, "minutes").toDate()
-        await prisma.otp.upsert({
+        const simpan = await prisma.otp.upsert({
             where: {
                 phone: phoneNumber
             },
@@ -49,8 +48,23 @@ export async function POST(req: Request) {
                 expiresAt
             }
         })
-        return Response.json({ ...wa, code })
+
+        console.log(simpan, "simpan otp")
+        
+        return Response.json({
+            success: true,
+            message: "success",
+            data: {
+                ...wa,
+                phone: phoneNumber,
+                code
+            }
+        })
     } catch (error) {
-        return new Response("internal server error", { status: 500 })
+        return Response.json({
+            data: null,
+            success: false,
+            message: "error",
+        }, { status: 500 })
     }
 }

@@ -56,13 +56,14 @@ function InputPin({
 
             try {
                 const res = await fetchApiClient.otpCompare({ body: JSON.stringify(body) })
-                tos(res.data.message)
+                console.log(res)
+                tos(res.message)
                 setPin(false)
                 setLoading(false)
                 router.push("/")
                 router.refresh()
             } catch (error) {
-                console.log(error)
+                console.log("Error  ", error)
                 tos("nomor telepon atau kode otp tidak cocok")
                 setLoading(false)
                 return
@@ -123,16 +124,21 @@ function PhoneInput({
         }
 
         const data = res.data
+
+        console.log(data, "ini adalah datanya")
+
         setCode(data.code)
-        tos("kirim otp ke nomor " + phoneNumber)
+        tos("kirim otp ke nomor +62" + phoneNumber)
 
         setPin(true)
         setLoading(false)
+
+
     }
 
     return (
         <Stack>
-            <TextInput onChange={(e) => setPhoneNumber(e.target.value)} leftSection={<Text>+62</Text>} type="number" />
+            <TextInput defaultValue={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} leftSection={<Text>+62</Text>} type="number" />
             <Button loading={loading} onClick={onSendnumber} variant="filled" color="lime">KIRIM</Button>
         </Stack>
     )

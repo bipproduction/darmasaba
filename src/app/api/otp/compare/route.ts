@@ -7,8 +7,13 @@ import { cookies } from 'next/headers'
 
 export async function POST(req: Request) {
     const { code, phoneNumber } = await req.json()
+
+    console.log(code, phoneNumber, "compare code and phone number")
     if (_.isEmpty(code) || _.isEmpty(phoneNumber)) {
-        return new Response("nomor telepon dan kode otp tidak boleh kosong", { status: 400 })
+        return Response.json({
+            success: false,
+            message: "code and phone number tidak boleh kosong"
+        }, { status: 400 })
     }
 
     const otp = await prisma.otp.findFirst({
@@ -18,12 +23,21 @@ export async function POST(req: Request) {
         }
     })
 
+    console.log("otp", otp)
+
     if (!otp) {
-        return new Response("nomor telepon dan kode otp tidak cocok", { status: 400 })
+        console.log("otp not found")
+        return Response.json({
+            success: false,
+            message: "otp not found"
+        }, { status: 400 })
     }
 
     if (moment().isAfter(otp.expiresAt)) {
-        return new Response("otp expired", { status: 400 })
+        return Response.json({
+            success: false,
+            message: "otp expired"
+        }, { status: 400 })
     }
 
     const user = await prisma.user.findUnique({
@@ -43,5 +57,11 @@ export async function POST(req: Request) {
 
     cookies().set("token", token)
 
-    return new Response(JSON.stringify({ token, message: "success" }), { status: 200 })
+    return Response.json({
+        success: true,
+        message: "success",
+        data: {
+            token
+        }
+    })
 }

@@ -6,7 +6,10 @@ export async function GET() {
     const token = auth?.split(' ')[1]
     console.log(token, "ini adalah tokennya")
     if (!token) {
-        return new Response("Unauthorized", { status: 401 })
+        return Response.json({
+            success: false,
+            message: "Unauthorized"
+        }, { status: 401 })
     }
 
     console.log(token)
@@ -18,17 +21,32 @@ export async function GET() {
     })
 
     if (!authLog) {
-        return new Response("Unauthorized", { status: 401 })
+        return Response.json({
+            success: false,
+            message: "Unauthorized !authlog"
+        }, { status: 401 })
     }
 
     if (!authLog.active) {
-        return new Response("Unauthorized", { status: 401 })
+        return Response.json({
+            success: false,
+            message: "Unauthorized !active"
+        }, { status: 401 })
     }
 
     // check expiresAt
     if (moment().isAfter(authLog.expiresAt)) {
-        return new Response("Unauthorized", { status: 401 })
+        return Response.json({
+            success: false,
+            message: "Unauthorized !expired"
+        }, { status: 401 })
     }
 
-    return Response.json([{ token }])
+    return Response.json({
+        success: true,
+        message: "success",
+        data: {
+            token
+        }
+    })
 }
