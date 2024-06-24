@@ -7,8 +7,8 @@ import { AssignAccessRole } from "./AssignAccessRole"
 import { UpdateAccessRole } from "./UpdateAccessRole"
 
 export async function MainAccessRole() {
-    const listData = await fetchApiServer.developerAccessRoleList({}).then(r => r.json())
-    const listUserRole = await fetchApiServer.developerUserRoleList({}).then(r => r.json())
+    const listData = (await fetchApiServer.developerAccessRoleList({})).data
+    const listUserRole = (await fetchApiServer.developerUserRoleList({})).data
     return <Card withBorder>
         <Stack>
             <Title>List Access Role</Title>

@@ -5,7 +5,7 @@ import { TableListDesa } from "./TableListDesa";
 export const dynamic= "force-dynamic"
 export const revalidate = 0
 export async function GetListDesa() {
-    const listDesa = await fetchApiServer.developerDesaList({}).then(r => r.json())
+    const listDesa = (await fetchApiServer.developerDesaList({})).data
     return <Stack>
         <Title>ListDesa</Title>
         <TableListDesa listData={listDesa} />

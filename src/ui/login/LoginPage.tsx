@@ -55,9 +55,8 @@ function InputPin({
             }
 
             try {
-                const res = await fetchApiClient.otpCompare({ body: JSON.stringify(body) }).then((res) => res)
-                const data = await res.json()
-                tos(data.message)
+                const res = await fetchApiClient.otpCompare({ body: JSON.stringify(body) })
+                tos(res.data.message)
                 setPin(false)
                 setLoading(false)
                 router.push("/")
@@ -118,12 +117,12 @@ function PhoneInput({
         }
 
         const res = await fetchApiClient.otpSend({ body: JSON.stringify({ phoneNumber: "62" + phoneNumber }) })
-        if (!res.ok) {
+        if (!res.success) {
             setLoading(false)
-            return tos(await res.text())
+            return tos(res.message)
         }
 
-        const data = await res.json()
+        const data = res.data
         setCode(data.code)
         tos("kirim otp ke nomor " + phoneNumber)
 

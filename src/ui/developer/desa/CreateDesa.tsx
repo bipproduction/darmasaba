@@ -12,8 +12,7 @@ export function CreateDesa() {
             name: desaName
         }
         const res = await fetchApiClient.developerDesaCreate({ body: JSON.stringify(body) })
-        const result = await res.json()
-        tos(result.message)
+        tos(res.data.message)
 
     }
     return <Card withBorder className="gray-light">

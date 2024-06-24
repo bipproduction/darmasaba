@@ -3,7 +3,7 @@ import { Card, Paper, Stack, Title } from "@mantine/core";
 import { TableJabatan } from "./TableJabatan";
 
 export async function MainJabatan() {
-    const listData = await fetchApiServer.developerJabatanList({}).then(r => r.json())
+    const listData = (await fetchApiServer.developerJabatanList({})).data
     return <Paper withBorder p={"md"}>
         <Stack>
             <Title>List Jabatan</Title>

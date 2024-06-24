@@ -18,7 +18,7 @@ export function CreateAccessRole() {
                 name,
                 desc
             })
-        }).then(r => r.json())
+        })
         tos(res.message)
 
     }

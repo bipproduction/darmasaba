@@ -19,11 +19,30 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    return fetch(`${this.host}/api/user/logout${searchParams || ""}`, {
-      method: "GET",
-      headers,
-      cache: "no-cache",
-    });
+    const sembarang: any[] | {} = [] || {};
+    try {
+      const res = await fetch(
+        `${this.host}/api/user/logout${searchParams || ""}`,
+        { method: "GET", headers, cache: "no-cache" },
+      );
+      const json = await res
+        .json()
+        .then((json) => json)
+        .catch((e) => null);
+
+      return {
+        data: json || sembarang,
+        success: !!json,
+        message: json ? "success" : "error",
+      };
+    } catch (e) {
+      console.error(e);
+      return {
+        data: sembarang,
+        success: false,
+        message: "error" + e,
+      };
+    }
   },
 
   /**
@@ -41,11 +60,30 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    return fetch(`${this.host}/api/user/get/token${searchParams || ""}`, {
-      method: "GET",
-      headers,
-      cache: "no-cache",
-    });
+    const sembarang: any[] | {} = [] || {};
+    try {
+      const res = await fetch(
+        `${this.host}/api/user/get/token${searchParams || ""}`,
+        { method: "GET", headers, cache: "no-cache" },
+      );
+      const json = await res
+        .json()
+        .then((json) => json)
+        .catch((e) => null);
+
+      return {
+        data: json || sembarang,
+        success: !!json,
+        message: json ? "success" : "error",
+      };
+    } catch (e) {
+      console.error(e);
+      return {
+        data: sembarang,
+        success: false,
+        message: "error" + e,
+      };
+    }
   },
 
   /**
@@ -63,11 +101,31 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    return fetch(`${this.host}/api/test${searchParams || ""}`, {
-      method: "GET",
-      headers,
-      cache: "no-cache",
-    });
+    const sembarang: any[] | {} = [] || {};
+    try {
+      const res = await fetch(`${this.host}/api/test${searchParams || ""}`, {
+        method: "GET",
+        headers,
+        cache: "no-cache",
+      });
+      const json = await res
+        .json()
+        .then((json) => json)
+        .catch((e) => null);
+
+      return {
+        data: json || sembarang,
+        success: !!json,
+        message: json ? "success" : "error",
+      };
+    } catch (e) {
+      console.error(e);
+      return {
+        data: sembarang,
+        success: false,
+        message: "error" + e,
+      };
+    }
   },
 
   /**
@@ -87,12 +145,30 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    return fetch(`${this.host}/api/otp/send${searchParams || ""}`, {
-      method: "POST",
-      headers,
-      body,
-      cache: "no-cache",
-    });
+    const sembarang: any[] | {} = [] || {};
+    try {
+      const res = await fetch(
+        `${this.host}/api/otp/send${searchParams || ""}`,
+        { method: "POST", headers, body, cache: "no-cache" },
+      );
+      const json = await res
+        .json()
+        .then((json) => json)
+        .catch((e) => null);
+
+      return {
+        data: json || sembarang,
+        success: !!json,
+        message: json ? "success" : "error",
+      };
+    } catch (e) {
+      console.error(e);
+      return {
+        data: sembarang,
+        success: false,
+        message: "error" + e,
+      };
+    }
   },
 
   /**
@@ -112,12 +188,30 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    return fetch(`${this.host}/api/otp/compare${searchParams || ""}`, {
-      method: "POST",
-      headers,
-      body,
-      cache: "no-cache",
-    });
+    const sembarang: any[] | {} = [] || {};
+    try {
+      const res = await fetch(
+        `${this.host}/api/otp/compare${searchParams || ""}`,
+        { method: "POST", headers, body, cache: "no-cache" },
+      );
+      const json = await res
+        .json()
+        .then((json) => json)
+        .catch((e) => null);
+
+      return {
+        data: json || sembarang,
+        success: !!json,
+        message: json ? "success" : "error",
+      };
+    } catch (e) {
+      console.error(e);
+      return {
+        data: sembarang,
+        success: false,
+        message: "error" + e,
+      };
+    }
   },
 
   /**
@@ -135,10 +229,30 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    return fetch(
-      `${this.host}/api/developer/user-role/list${searchParams || ""}`,
-      { method: "GET", headers, cache: "no-cache" },
-    );
+    const sembarang: any[] | {} = [] || {};
+    try {
+      const res = await fetch(
+        `${this.host}/api/developer/user-role/list${searchParams || ""}`,
+        { method: "GET", headers, cache: "no-cache" },
+      );
+      const json = await res
+        .json()
+        .then((json) => json)
+        .catch((e) => null);
+
+      return {
+        data: json || sembarang,
+        success: !!json,
+        message: json ? "success" : "error",
+      };
+    } catch (e) {
+      console.error(e);
+      return {
+        data: sembarang,
+        success: false,
+        message: "error" + e,
+      };
+    }
   },
 
   /**
@@ -156,11 +270,30 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    return fetch(`${this.host}/api/developer/user/list${searchParams || ""}`, {
-      method: "GET",
-      headers,
-      cache: "no-cache",
-    });
+    const sembarang: any[] | {} = [] || {};
+    try {
+      const res = await fetch(
+        `${this.host}/api/developer/user/list${searchParams || ""}`,
+        { method: "GET", headers, cache: "no-cache" },
+      );
+      const json = await res
+        .json()
+        .then((json) => json)
+        .catch((e) => null);
+
+      return {
+        data: json || sembarang,
+        success: !!json,
+        message: json ? "success" : "error",
+      };
+    } catch (e) {
+      console.error(e);
+      return {
+        data: sembarang,
+        success: false,
+        message: "error" + e,
+      };
+    }
   },
 
   /**
@@ -178,10 +311,30 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    return fetch(
-      `${this.host}/api/developer/jabatan/list${searchParams || ""}`,
-      { method: "GET", headers, cache: "no-cache" },
-    );
+    const sembarang: any[] | {} = [] || {};
+    try {
+      const res = await fetch(
+        `${this.host}/api/developer/jabatan/list${searchParams || ""}`,
+        { method: "GET", headers, cache: "no-cache" },
+      );
+      const json = await res
+        .json()
+        .then((json) => json)
+        .catch((e) => null);
+
+      return {
+        data: json || sembarang,
+        success: !!json,
+        message: json ? "success" : "error",
+      };
+    } catch (e) {
+      console.error(e);
+      return {
+        data: sembarang,
+        success: false,
+        message: "error" + e,
+      };
+    }
   },
 
   /**
@@ -199,11 +352,30 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    return fetch(`${this.host}/api/developer/desa/list${searchParams || ""}`, {
-      method: "GET",
-      headers,
-      cache: "no-cache",
-    });
+    const sembarang: any[] | {} = [] || {};
+    try {
+      const res = await fetch(
+        `${this.host}/api/developer/desa/list${searchParams || ""}`,
+        { method: "GET", headers, cache: "no-cache" },
+      );
+      const json = await res
+        .json()
+        .then((json) => json)
+        .catch((e) => null);
+
+      return {
+        data: json || sembarang,
+        success: !!json,
+        message: json ? "success" : "error",
+      };
+    } catch (e) {
+      console.error(e);
+      return {
+        data: sembarang,
+        success: false,
+        message: "error" + e,
+      };
+    }
   },
 
   /**
@@ -223,10 +395,30 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    return fetch(
-      `${this.host}/api/developer/desa/create${searchParams || ""}`,
-      { method: "POST", headers, body, cache: "no-cache" },
-    );
+    const sembarang: any[] | {} = [] || {};
+    try {
+      const res = await fetch(
+        `${this.host}/api/developer/desa/create${searchParams || ""}`,
+        { method: "POST", headers, body, cache: "no-cache" },
+      );
+      const json = await res
+        .json()
+        .then((json) => json)
+        .catch((e) => null);
+
+      return {
+        data: json || sembarang,
+        success: !!json,
+        message: json ? "success" : "error",
+      };
+    } catch (e) {
+      console.error(e);
+      return {
+        data: sembarang,
+        success: false,
+        message: "error" + e,
+      };
+    }
   },
 
   /**
@@ -244,10 +436,30 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    return fetch(
-      `${this.host}/api/developer/access-role/list-by-user-role-id${searchParams || ""}`,
-      { method: "GET", headers, cache: "no-cache" },
-    );
+    const sembarang: any[] | {} = [] || {};
+    try {
+      const res = await fetch(
+        `${this.host}/api/developer/access-role/list-by-user-role-id${searchParams || ""}`,
+        { method: "GET", headers, cache: "no-cache" },
+      );
+      const json = await res
+        .json()
+        .then((json) => json)
+        .catch((e) => null);
+
+      return {
+        data: json || sembarang,
+        success: !!json,
+        message: json ? "success" : "error",
+      };
+    } catch (e) {
+      console.error(e);
+      return {
+        data: sembarang,
+        success: false,
+        message: "error" + e,
+      };
+    }
   },
 
   /**
@@ -265,10 +477,30 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    return fetch(
-      `${this.host}/api/developer/access-role/list${searchParams || ""}`,
-      { method: "GET", headers, cache: "no-cache" },
-    );
+    const sembarang: any[] | {} = [] || {};
+    try {
+      const res = await fetch(
+        `${this.host}/api/developer/access-role/list${searchParams || ""}`,
+        { method: "GET", headers, cache: "no-cache" },
+      );
+      const json = await res
+        .json()
+        .then((json) => json)
+        .catch((e) => null);
+
+      return {
+        data: json || sembarang,
+        success: !!json,
+        message: json ? "success" : "error",
+      };
+    } catch (e) {
+      console.error(e);
+      return {
+        data: sembarang,
+        success: false,
+        message: "error" + e,
+      };
+    }
   },
 
   /**
@@ -288,10 +520,30 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    return fetch(
-      `${this.host}/api/developer/access-role/create${searchParams || ""}`,
-      { method: "POST", headers, body, cache: "no-cache" },
-    );
+    const sembarang: any[] | {} = [] || {};
+    try {
+      const res = await fetch(
+        `${this.host}/api/developer/access-role/create${searchParams || ""}`,
+        { method: "POST", headers, body, cache: "no-cache" },
+      );
+      const json = await res
+        .json()
+        .then((json) => json)
+        .catch((e) => null);
+
+      return {
+        data: json || sembarang,
+        success: !!json,
+        message: json ? "success" : "error",
+      };
+    } catch (e) {
+      console.error(e);
+      return {
+        data: sembarang,
+        success: false,
+        message: "error" + e,
+      };
+    }
   },
 
   /**
@@ -311,10 +563,30 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    return fetch(
-      `${this.host}/api/developer/access-role/assign${searchParams || ""}`,
-      { method: "POST", headers, body, cache: "no-cache" },
-    );
+    const sembarang: any[] | {} = [] || {};
+    try {
+      const res = await fetch(
+        `${this.host}/api/developer/access-role/assign${searchParams || ""}`,
+        { method: "POST", headers, body, cache: "no-cache" },
+      );
+      const json = await res
+        .json()
+        .then((json) => json)
+        .catch((e) => null);
+
+      return {
+        data: json || sembarang,
+        success: !!json,
+        message: json ? "success" : "error",
+      };
+    } catch (e) {
+      console.error(e);
+      return {
+        data: sembarang,
+        success: false,
+        message: "error" + e,
+      };
+    }
   },
 
   /**
@@ -332,11 +604,30 @@ export const fetchApiServer = {
     const headers: Record<string, string> = token
       ? { Authorization: `Bearer ${token}` }
       : {};
-    return fetch(`${this.host}/api/dashboard/get-user${searchParams || ""}`, {
-      method: "GET",
-      headers,
-      cache: "no-cache",
-    });
+    const sembarang: any[] | {} = [] || {};
+    try {
+      const res = await fetch(
+        `${this.host}/api/dashboard/get-user${searchParams || ""}`,
+        { method: "GET", headers, cache: "no-cache" },
+      );
+      const json = await res
+        .json()
+        .then((json) => json)
+        .catch((e) => null);
+
+      return {
+        data: json || sembarang,
+        success: !!json,
+        message: json ? "success" : "error",
+      };
+    } catch (e) {
+      console.error(e);
+      return {
+        data: sembarang,
+        success: false,
+        message: "error" + e,
+      };
+    }
   },
   paths() {
     return {
