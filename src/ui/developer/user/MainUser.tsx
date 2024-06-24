@@ -5,10 +5,10 @@ import { CreateUser } from "./CreateUser";
 import { UpdateUser } from "./UpdateUser";
 
 export async function MainUser() {
-    const listUser: any[] = (await fetchApiServer.developerUserList({})).data
-    const listDesa: any[] = (await fetchApiServer.developerDesaList({})).data
-    const listUserRole: any[] = (await fetchApiServer.developerUserRoleList({})).data
-    const listJabatan: any[] = await (await fetchApiServer.developerJabatanList({})).data
+    const listUser: any[] = (await fetchApiServer.developerUserList({})).data || []
+    const listDesa: any[] = (await fetchApiServer.developerDesaList({})).data || []
+    const listUserRole: any[] = (await fetchApiServer.developerUserRoleList({})).data || []
+    const listJabatan: any[] = await (await fetchApiServer.developerJabatanList({})).data || []
     return (
         <Paper withBorder p={"md"}>
             <Stack>
